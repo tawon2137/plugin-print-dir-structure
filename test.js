@@ -1,11 +1,11 @@
-const mockJSON = require('./assets/mock');
+var mockJSON = require('./assets/mock');
 
-const assert = require('assert');
+var assert = require('assert');
 
-const process = require('./index.js');
+var proc = require('./index.js');
 
-const mockData = {
-  args: [JSON.parse(mockJSON), JSON.parse(mockJSON)]
+var mockData = {
+  args: [JSON.parse(mockJSON)]
 }
 
 
@@ -19,7 +19,9 @@ describe('test Directory Data to JSON Format', function() {
 
   describe('#run parse to structure Data', function() {
     it('first Check HTML Format', function() {
-      assert.equal(typeof process.blocks.directoryStructure.process(mockData), 'string');
+      var result = typeof proc.blocks.directoryStructure.process(mockData)
+      console.log(result);
+      assert.equal(result, 'string');
     });
   });
 });

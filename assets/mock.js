@@ -14,7 +14,46 @@ const mockJSON = [
             ]
           },
           {
-            "name": "font"
+            "name": "font",
+            "list": [
+              {
+                "name": "assets",
+                "list": [
+                  {
+                    "name": "css",
+                    "list": [
+                      "...",
+                      "index.css"
+                    ]
+                  },
+                  {
+                    "name": "font"
+                  },
+                  {
+                    "name": "img"
+                  }
+                ]
+              },
+              {
+                "name": "assets",
+                "list": [
+                  {
+                    "name": "css",
+                    "list": [
+                      "...",
+                      "index.css"
+                    ]
+                  },
+                  {
+                    "name": "font"
+                  },
+                  {
+                    "name": "img"
+                  }
+                ]
+              },
+            ]
+
           },
           {
             "name": "img"
@@ -38,7 +77,148 @@ const mockJSON = [
       "main.js"
     ]
   },
-  "..."
+  {
+    "name": "assets222",
+    "list": [
+      {
+        "name": "css",
+        "list": [
+          "...",
+          "index.css",
+          {
+            "name": "font"
+          },
+          {
+            "name": "img"
+          },
+          {
+            "name": "assets",
+            "list": [
+              {
+                "name": "css",
+                "list": [
+                  "...",
+                  "index.css"
+                ]
+              },
+              {
+                "name": "font"
+              },
+              {
+                "name": "img"
+              },
+              {
+                "name": "assets",
+                "list": [
+                  {
+                    "name": "css",
+                    "list": [
+                      "...",
+                      "index.css"
+                    ]
+                  },
+                  {
+                    "name": "font"
+                  },
+                  {
+                    "name": "img"
+                  }
+                ]
+              },
+            ]
+          },
+        ]
+      },
+      {
+        "name": "font"
+      },
+      {
+        "name": "img",
+        "list": [
+          "...",
+          "index.css",
+          {
+            "name": "font"
+          },
+          {
+            "name": "img"
+          },
+          {
+            "name": "assets",
+            "list": [
+              {
+                "name": "css",
+                "list": [
+                  "...",
+                  "index.css"
+                ]
+              },
+              {
+                "name": "font"
+              },
+              {
+                "name": "img"
+              },
+              {
+                "name": "assets",
+                "list": [
+                  {
+                    "name": "css",
+                    "list": [
+                      "...",
+                      "index.css"
+                    ]
+                  },
+                  {
+                    "name": "font"
+                  },
+                  {
+                    "name": "img"
+                  },
+                  {
+                    "name": "assets",
+                    "list": [
+                      {
+                        "name": "css",
+                        "list": [
+                          "...",
+                          "index.css"
+                        ]
+                      },
+                      {
+                        "name": "font"
+                      },
+                      {
+                        "name": "img"
+                      },
+                      {
+                        "name": "assets",
+                        "list": [
+                          {
+                            "name": "css",
+                            "list": [
+                              "...",
+                              "index.css"
+                            ]
+                          },
+                          {
+                            "name": "font"
+                          },
+                          {
+                            "name": "img"
+                          }
+                        ]
+                      },
+                    ]
+                  },
+                ]
+              },
+            ]
+          },
+        ]
+      }
+    ]
+  },
 ]
 
 module.exports = JSON.stringify(mockJSON)
