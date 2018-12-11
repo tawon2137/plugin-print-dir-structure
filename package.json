@@ -1,0 +1,30 @@
+{
+  "name": "gitbook-plugin-print-dir-structure",
+  "version": "0.0.1",
+  "description": "print JSON directory structure Data to HTML Format",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha ./test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GitbookIO/plugin-codetabs.git"
+  },
+  "keywords": [
+    "gitbook",
+    "code"
+  ],
+  "engines": {
+    "gitbook": ">=3.0.0-pre.8",
+    "node": ">=7.0.0"
+  },
+  "author": "Tae-woong Kim <tawon2137@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/GitbookIO/plugin-codetabs/issues"
+  },
+  "homepage": "https://github.com/GitbookIO/plugin-codetabs#readme",
+  "devDependencies": {
+    "mocha": "^5.2.0"
+  }
+}
