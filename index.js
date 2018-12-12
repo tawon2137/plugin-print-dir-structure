@@ -69,14 +69,15 @@ module.exports = {
   book: {
     assets: './assets',
   },
-  blocks: {
-    directoryStructure: {
-      process: function(block) {
-        var args = Array.prototype.concat.apply([], block.args)
+  filters: {
+    directoryStructure: function(arr) {
+        if(typeof arr === 'string') {
+          arr = JSON.parse(arr);
+        }
+        var args = arr;
         var data = args.reduce(reduceInterator(0, []), []);
 
         return renderToHTML(data);
-      }
     }
   }
 }

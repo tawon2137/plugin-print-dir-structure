@@ -4,9 +4,7 @@ var assert = require('assert');
 
 var proc = require('./index.js');
 
-var mockData = {
-  args: [JSON.parse(mockJSON)]
-}
+var mockData = JSON.parse(mockJSON);
 
 
 describe('test Directory Data to JSON Format', function() {
@@ -19,7 +17,7 @@ describe('test Directory Data to JSON Format', function() {
 
   describe('#run parse to structure Data', function() {
     it('first Check string Data', function() {
-      var result = typeof proc.blocks.directoryStructure.process(mockData) === 'string'
+      var result = typeof proc.filters.directoryStructure(mockData) === 'string'
       assert.equal(result, true);
     });
   });
