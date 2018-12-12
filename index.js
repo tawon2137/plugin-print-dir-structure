@@ -69,10 +69,10 @@ module.exports = {
         }
         var args = arr;
         var data = args.reduce(reduceInterator(0, []), []);
-
         data.forEach(item => {
-          console.log(item.blank + item.line + item.name)
+          console.log('export : ', item.blank + item.line + item.name)
         })
+
 
         return renderToHTML(data);
     }
