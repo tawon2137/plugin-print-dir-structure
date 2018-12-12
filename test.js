@@ -18,10 +18,9 @@ describe('test Directory Data to JSON Format', function() {
 
 
   describe('#run parse to structure Data', function() {
-    it('first Check HTML Format', function() {
-      var result = typeof proc.blocks.directoryStructure.process(mockData)
-      console.log(result);
-      assert.equal(result, 'string');
+    it('first Check string Data', function() {
+      var result = typeof proc.blocks.directoryStructure.process(mockData) === 'string'
+      assert.equal(result, true);
     });
   });
 });

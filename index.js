@@ -1,38 +1,45 @@
 var BLANK_LEVEL = 4;
 var currentInteratordepth = 0;
-var isRun = false;
+var isLastLine = false;
 
 var reduceInterator = function(depth, ignoreDepths) {
-  return function (previus, current, currentIndex, array) {
-    const isFolder = typeof current === 'object';
-    const isLast = currentIndex === array.length - 1;
-
-    if(isLast) {
+  return function (previous, current, currentIndex, array) {
+    var isDirectory = typeof current === 'object';
+    var isLastIndex = currentIndex === array.length - 1;
+    var copyDepth = depth;
+    if(isLastIndex) {
       switch(true) {
         case depth === 0:
-          isRun = true;
+          isLastLine = true
           ignoreDepths = [depth];
           currentInteratordepth += BLANK_LEVEL;
           break;
-        case isRun && depth === currentInteratordepth:
-          ignoreDepths.push(currentInteratordepth);
-          ignoreDepths = ignoreDepths.filter(function(number) {
-            return number <= depth;
-          });
-          currentInteratordepth += BLANK_LEVEL;
-        default:
+        case isLastLine:
           ignoreDepths.push(depth);
           ignoreDepths = ignoreDepths.filter(function(number) {
             return number <= depth;
           });
+          depth === currentInteratordepth && (currentInteratordepth += BLANK_LEVEL);
       }
     }
 
-    return previus +
-           (
-             isFolder ? directoryToHTML(current, isLast, depth, ignoreDepths)
-                      : fileToHTML(current, isLast, depth, ignoreDepths)
-           )
+    var row = {
+      name: isDirectory ? current.name + '/' : current,
+      blank: getBlank(depth, ignoreDepths),
+      depth: depth / BLANK_LEVEL + 1,
+      isDirectory: isDirectory,
+      line: (isLastIndex ? '└──' : '├──')
+    }
+    previous.push(row);
+
+
+    if(isDirectory && Array.isArray(current.list) && current.list.length > 0) {
+      return previous.concat(
+        current.list.reduce(reduceInterator((copyDepth += BLANK_LEVEL), ignoreDepths), [])
+      )
+    }
+
+    return previous;
   }
 }
 
@@ -49,15 +56,14 @@ var getBlank = function (level, ignoreDepths) {
   return blank
 }
 
-function directoryToHTML(directory, isLast, depth, ignoreDepths) {
-  var HTML = '<span class="directory' + ' depth-' + (depth / BLANK_LEVEL) +'">' + getBlank(depth, ignoreDepths) + (isLast ? '└── ' : '├── ') + directory.name + '<\/span>\/\n'
-  return Array.isArray(directory.list) && directory.list.length > 0  ? directory.list.reduce(reduceInterator((depth += BLANK_LEVEL), ignoreDepths), HTML) : HTML;
-}
+function renderToHTML(data) {
+  var startHTML = '<pre class="directory-structure">\n<code>\n' ;
+  var endHTML = '</code>\n</pre>';
 
-function fileToHTML(fileName, isLast, depth, ignoreDepths) {
-  return '<span class="file' + ' depth-' + (depth / BLANK_LEVEL) +' ">' + getBlank(depth, ignoreDepths) + (isLast ? '└── ' : '├── ') + fileName + '<\/span>\n'
+  return data.reduce(function(html, current) {
+    return html + ('<span class=\"' + (current.isDirectory ? 'directory' : 'file') + '\" data-depth="'+ current.depth + '">' + current.blank + current.line + current.name) + '<\/span>\n'
+  }, startHTML)  + endHTML
 }
-
 
 module.exports = {
   book: {
@@ -66,10 +72,12 @@ module.exports = {
   blocks: {
     directoryStructure: {
       process: function(block) {
-        const args = Array.prototype.concat.apply([], block.args)
-        const html = args.reduce(reduceInterator(0, []), '<pre class="directory-structure">\n<code>\n') + '</code>\n</pre>';
-        console.log(html);
-        return html;
+        var args = Array.prototype.concat.apply([], block.args)
+        var data = args.reduce(reduceInterator(0, []), []);
+        data.forEach(item => {
+          console.log(item.blank + item.line + item.name)
+        })
+        return renderToHTML(data);
       }
     }
   }

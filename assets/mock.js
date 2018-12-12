@@ -1,4 +1,4 @@
-const mockJSON = [
+var mockJSON = [
   "...",
   {
     "name": "src",
@@ -13,51 +13,6 @@ const mockJSON = [
               "index.css"
             ]
           },
-          {
-            "name": "font",
-            "list": [
-              {
-                "name": "assets",
-                "list": [
-                  {
-                    "name": "css",
-                    "list": [
-                      "...",
-                      "index.css"
-                    ]
-                  },
-                  {
-                    "name": "font"
-                  },
-                  {
-                    "name": "img"
-                  }
-                ]
-              },
-              {
-                "name": "assets",
-                "list": [
-                  {
-                    "name": "css",
-                    "list": [
-                      "...",
-                      "index.css"
-                    ]
-                  },
-                  {
-                    "name": "font"
-                  },
-                  {
-                    "name": "img"
-                  }
-                ]
-              },
-            ]
-
-          },
-          {
-            "name": "img"
-          }
         ]
       },
       {
@@ -72,151 +27,42 @@ const mockJSON = [
       {
         "name": "lib"
       },
-      "App.vue",
+      "App.js",
       "init.js",
       "main.js"
     ]
   },
+  "...",
   {
-    "name": "assets222",
+    "name": "dist",
     "list": [
       {
-        "name": "css",
+        "name": "assets",
         "list": [
-          "...",
-          "index.css",
           {
-            "name": "font"
-          },
-          {
-            "name": "img"
-          },
-          {
-            "name": "assets",
+            "name": "css",
             "list": [
-              {
-                "name": "css",
-                "list": [
-                  "...",
-                  "index.css"
-                ]
-              },
-              {
-                "name": "font"
-              },
-              {
-                "name": "img"
-              },
-              {
-                "name": "assets",
-                "list": [
-                  {
-                    "name": "css",
-                    "list": [
-                      "...",
-                      "index.css"
-                    ]
-                  },
-                  {
-                    "name": "font"
-                  },
-                  {
-                    "name": "img"
-                  }
-                ]
-              },
+              "...",
+              "index.css"
             ]
           },
         ]
       },
       {
-        "name": "font"
+        "name": "components"
       },
       {
-        "name": "img",
-        "list": [
-          "...",
-          "index.css",
-          {
-            "name": "font"
-          },
-          {
-            "name": "img"
-          },
-          {
-            "name": "assets",
-            "list": [
-              {
-                "name": "css",
-                "list": [
-                  "...",
-                  "index.css"
-                ]
-              },
-              {
-                "name": "font"
-              },
-              {
-                "name": "img"
-              },
-              {
-                "name": "assets",
-                "list": [
-                  {
-                    "name": "css",
-                    "list": [
-                      "...",
-                      "index.css"
-                    ]
-                  },
-                  {
-                    "name": "font"
-                  },
-                  {
-                    "name": "img"
-                  },
-                  {
-                    "name": "assets",
-                    "list": [
-                      {
-                        "name": "css",
-                        "list": [
-                          "...",
-                          "index.css"
-                        ]
-                      },
-                      {
-                        "name": "font"
-                      },
-                      {
-                        "name": "img"
-                      },
-                      {
-                        "name": "assets",
-                        "list": [
-                          {
-                            "name": "css",
-                            "list": [
-                              "...",
-                              "index.css"
-                            ]
-                          },
-                          {
-                            "name": "font"
-                          },
-                          {
-                            "name": "img"
-                          }
-                        ]
-                      },
-                    ]
-                  },
-                ]
-              },
-            ]
-          },
-        ]
-      }
+        "name": "config"
+      },
+      {
+        "name": "core"
+      },
+      {
+        "name": "lib"
+      },
+      "App.js",
+      "init.js",
+      "main.js"
     ]
   },
 ]
