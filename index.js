@@ -57,8 +57,8 @@ var getBlank = function (level, ignoreDepths) {
 }
 
 function renderToHTML(data) {
-  var startHTML = '<pre class="directory-structure">\n<code>\n' ;
-  var endHTML = '</code>\n</pre>';
+  var startHTML = '<pre class="directory-structure"><code>\.\n' ;
+  var endHTML = '\n</code></pre>';
 
   return data.reduce(function(html, current) {
     return html + (current.blank + current.line + current.name) + '\n'
@@ -75,7 +75,7 @@ module.exports = {
           arr = JSON.parse(arr);
         }
         var args = arr;
-        var data = args.reduce(reduceInterator(0, []), ['.']);
+        var data = args.reduce(reduceInterator(0, []), []);
 
         return renderToHTML(data);
     }
