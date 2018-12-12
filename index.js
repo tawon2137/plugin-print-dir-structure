@@ -61,7 +61,7 @@ function renderToHTML(data) {
   var endHTML = '</code>\n</pre>';
 
   return data.reduce(function(html, current) {
-    return html + ('<span class=\"' + (current.isDirectory ? 'directory' : 'file') + '\" data-depth="'+ current.depth + '">' + current.blank + current.line + current.name) + '<\/span>\n'
+    return html + (current.blank + current.line + current.name) + '\n'
   }, startHTML)  + endHTML
 }
 
@@ -75,7 +75,7 @@ module.exports = {
           arr = JSON.parse(arr);
         }
         var args = arr;
-        var data = args.reduce(reduceInterator(0, []), []);
+        var data = args.reduce(reduceInterator(0, []), ['.']);
 
         return renderToHTML(data);
     }
