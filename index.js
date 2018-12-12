@@ -1,26 +1,19 @@
 var BLANK_LEVEL = 4;
-var currentInteratordepth = 0;
-var isLastLine = false;
 
 var reduceInterator = function(depth, ignoreDepths) {
   return function (previous, current, currentIndex, array) {
     var isDirectory = typeof current === 'object';
     var isLastIndex = currentIndex === array.length - 1;
     var copyDepth = depth;
+
     if(isLastIndex) {
-      switch(true) {
-        case depth === 0:
-          isLastLine = true
-          ignoreDepths = [depth];
-          currentInteratordepth += BLANK_LEVEL;
-          break;
-        case isLastLine:
-          ignoreDepths.push(depth);
-          ignoreDepths = ignoreDepths.filter(function(number) {
-            return number <= depth;
-          });
-          depth === currentInteratordepth && (currentInteratordepth += BLANK_LEVEL);
-      }
+      ignoreDepths.push(depth);
+    }
+
+    if(currentIndex === 0) {
+      ignoreDepths = ignoreDepths.filter(function(number) {
+        return number <= depth;
+      });
     }
 
     var row = {
@@ -76,6 +69,10 @@ module.exports = {
         }
         var args = arr;
         var data = args.reduce(reduceInterator(0, []), []);
+
+        data.forEach(item => {
+          console.log(item.blank + item.line + item.name)
+        })
 
         return renderToHTML(data);
     }
