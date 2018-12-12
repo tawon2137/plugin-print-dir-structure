@@ -58,7 +58,7 @@ var getBlank = function (level, ignoreDepths) {
 
 function renderToHTML(data) {
   var startHTML = '<pre class="directory-structure"><code>\.\n' ;
-  var endHTML = '\n</code></pre>';
+  var endHTML = '</code></pre>';
 
   return data.reduce(function(html, current) {
     return html + (current.blank + current.line + current.name) + '\n'
